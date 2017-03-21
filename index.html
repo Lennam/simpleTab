@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            width: 450px;
+            margin: 10px auto;
+        }
+        #container #tab {
+            overflow: hidden;
+            background: black;
+            border: 1px solid black;
+            zoom:1
+        }
+        #container #tab li {
+            float: left;
+            height: 30px;
+            padding: 0 20px;
+            cursor: pointer;
+            list-style-type: none;
+            line-height: 30px;
+            color: white;
+        }
+        #container li.current {
+            background: gray;
+            color: black;
+        }
+        #wrap {
+            line-height: 25px;
+            border: 1px solid black;
+            border-top-width: 0;
+        }
+        #wrap ul {
+            display: none;
+        }
+        #wrap ul li {
+            margin:0 20px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let cLi = document.getElementById('tab').getElementsByTagName('li');
+            let wUl = document.getElementById('wrap').getElementsByTagName('ul');
+            for (let i = 0; i < cLi.length; i ++) {
+                cLi[i].index = i;
+                cLi[i].onmouseover = function () {
+                    for ( let j =0; j < cLi.length; j++) {
+                        cLi[j].className = '';
+                    }
+                    this.className = 'current';
+                    for (let n = 0; n < wUl.length; n++) {
+                        wUl[n].style.display = 'none';
+                    }
+                    wUl[this.index].style.display = 'block';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="current">111111</li>
+        <li>222222</li>
+        <li>333333</li>
+    </ul>
+    <div id="wrap">
+        <ul style="display: block">
+            <li>111111</li>
+            <li>222222</li>
+            <li>333333</li>
+            <li>222222</li>
+            <li>333333</li>
+        </ul>
+        <ul>
+            <li>111111</li>
+            <li>666666</li>
+            <li>222222</li>
+            <li>333333</li>
+        </ul>
+        <ul>
+            <li>111111</li>
+            <li>222222</li>
+            <li>333333</li>
+            <li>222222</li>
+            <li>333333</li>
+            <li>222222</li>
+            <li>222222</li>
+            <li>333333</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
